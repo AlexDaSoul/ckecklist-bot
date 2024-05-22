@@ -13,10 +13,10 @@ const controller = new Controller(app);
 app.use(express.json());
 app.use(
     express.urlencoded({
-        extended: true
+        extended: true,
     })
 );
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
+    console.log(`Server running on port ${PORT}`);
 });
