@@ -30,9 +30,9 @@ app.post('/new-message', async (req, res) => {
 
     let responseText = 'I have nothing to say.'
 
-    console.log('REQ', req.body)
+    console.log('REQ', message)
     console.log('----------------------------------------')
-    console.log('RES', res.body)
+   // console.log('RES', res.body)
 
     // send response
     try {
