@@ -5,5 +5,5 @@ export const TELEGRAM = {
 };
 
 export const API = {
-    SEND_MESSAGE: '/new-message',
+    NEW_MESSAGE: '/new-message',
 };

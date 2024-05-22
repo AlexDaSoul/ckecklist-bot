@@ -5,12 +5,11 @@ const servise = new Servise();
 
 export default class Controller {
     constructor (app) {
-        this.sendMessage(app);
+        this.newMessage(app);
     }
 
-    sendMessage(app) {
-        app.post(API.SEND_MESSAGE, async (req, res) => {
-            console.log('Init sendMessage Controller');
+    newMessage(app) {
+        app.post(API.NEW_MESSAGE, async (req, res) => {
             await servise.sendMessage(req, res);
         });
     }

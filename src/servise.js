@@ -2,10 +2,6 @@ import axios from 'axios';
 import { TELEGRAM } from './const.js';
 
 export default class Servise {
-    constructor() {
-        console.log('Init Servise');
-    }
-
     async sendMessage(req, res) {
         console.log('Init sendMessage');
 
@@ -25,6 +21,7 @@ export default class Servise {
     
         // send response
         try {
+            console.log('Init Servise');
             await axios.post(TELEGRAM.SEND_MESSAGE, {
                 chat_id: chatId,
                 text: responseText,
