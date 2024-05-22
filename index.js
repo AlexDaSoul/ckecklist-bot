@@ -5,7 +5,6 @@ import express from 'express';
 config()
 const app = express()
 
-const JOKE_API = 'https://v2.jokeapi.dev/joke/Programming?type=single';
 const TELEGRAM_URI = `https://api.telegram.org/bot${process.env.TELEGRAM_API_TOKEN}/sendMessage`;
 
 app.use(express.json())
@@ -14,6 +13,8 @@ app.use(
         extended: true
     })
 );
+
+// curl -F "url=https://my-telegram-bot-server.herokuapp.com/new-message" https://api.telegram.org/6780744163:AAGVyCGpb1TTRAdYqsgjBrTW_mMnjM-Cqy8/setWebhook
 
 app.post('/new-message', async (req, res) => {
     const { message } = req.body
@@ -27,33 +28,7 @@ app.post('/new-message', async (req, res) => {
     // local json
     // const dataFromJson = fs.readJSONSync(join(process.cwd(), 'todos.json'))
 
-    // google spreadsheet
-    await doc.loadInfo()
-    const sheet = doc.sheetsByIndex[0]
-    const rows = await sheet.getRows()
-    const dataFromSpreadsheet = rows.reduce((obj, row) => {
-        if (row.date) {
-            const todo = { text: row.text, done: row.done }
-            obj[row.date] = obj[row.date] ? [...obj[row.date], todo] : [todo]
-        }
-        return obj
-    }, {})
-
     let responseText = 'I have nothing to say.'
-    // generate responseText
-    if (messageText === 'joke') {
-        try {
-            const response = await axios(JOKE_API)
-            responseText = response.data.joke
-        } catch (e) {
-            console.log(e)
-            res.send(e)
-        }
-    } else if (/\d\d\.\d\d/.test(messageText)) {
-        // responseText = dataFromJson[messageText] || 'You have nothing to do on this day.'
-        responseText =
-            dataFromSpreadsheet[messageText] || 'You have nothing to do on this day.'
-    }
 
     // send response
     try {
