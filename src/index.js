@@ -8,7 +8,6 @@ config();
 
 const PORT = process.env.PORT || 3000;
 const app = express();
-const controller = new Controller(app);
 
 app.use(express.json());
 app.use(
@@ -16,6 +15,8 @@ app.use(
         extended: true,
     })
 );
+
+new Controller(app);
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
