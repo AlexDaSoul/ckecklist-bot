@@ -1,0 +1,22 @@
+{
+  "name": "ckecklist_bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "add": "^2.0.6",
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "fs-extra": "^11.2.0",
+    "global": "^4.4.0",
+    "heroku": "^8.11.5",
+    "nodemon": "^3.1.0"
+  }
+}
