@@ -9,8 +9,8 @@ export default class Controller {
     }
 
     sendMessage(app) {
-        console.log('Init sendMessage Controller');
         app.post(API.SEND_MESSAGE, async (req, res) => {
+            console.log('Init sendMessage Controller');
             await servise.sendMessage(req, res);
         });
     }
