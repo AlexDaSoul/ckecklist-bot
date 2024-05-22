@@ -2,9 +2,13 @@ import axios from 'axios';
 import { TELEGRAM } from './const.js';
 
 export default class Servise {
-    constructor() {}
+    constructor() {
+        console.log('Init Servise');
+    }
 
     async sendMessage(req, res) {
+        console.log('Init sendMessage');
+
         const { message } = req.body;
         const messageText = message?.text?.toLowerCase()?.trim();
         const chatId = message?.chat?.id;
