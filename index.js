@@ -14,7 +14,7 @@ app.use(
     })
 );
 
-// curl -F "url=https://my-telegram-bot-server.herokuapp.com/new-message" https://api.telegram.org/6780744163:AAGVyCGpb1TTRAdYqsgjBrTW_mMnjM-Cqy8/setWebhook
+// curl https://api.telegram.org/bot6780744163:AAGVyCGpb1TTRAdYqsgjBrTW_mMnjM-Cqy8/setWebhook -- "url=https://ckecklist-bot-telegramapitoken.up.railway.app/new-message"
 
 app.post('/new-message', async (req, res) => {
     const { message } = req.body
@@ -29,6 +29,10 @@ app.post('/new-message', async (req, res) => {
     // const dataFromJson = fs.readJSONSync(join(process.cwd(), 'todos.json'))
 
     let responseText = 'I have nothing to say.'
+
+    console.log('REQ', req)
+    console.log('----------------------------------------')
+    console.log('RES', res)
 
     // send response
     try {
