@@ -15,7 +15,7 @@ config();
 // import Servise from './servise.js';
 import { API } from './const.js';
 
-const servise = new Servise();
+// const servise = new Servise();
 
 const PORT = process.env.PORT || 3000;
 const app = express();
