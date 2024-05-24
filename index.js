@@ -30,7 +30,7 @@ app.use(
     })
 );
 
-console.log('FFF', PORT)
+console.log('FFF', app)
 
 app.post('/new-message', async (req, res) => {
     const { message } = req.body;
