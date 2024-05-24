@@ -12,7 +12,7 @@ import express from 'express';
 
 config();
 
-import Servise from './servise.js';
+// import Servise from './servise.js';
 import { API } from './const.js';
 
 const servise = new Servise();
@@ -28,7 +28,33 @@ app.use(
 );
 
 app.post(API.NEW_MESSAGE, async (req, res) => {
-    await servise.sendMessage(req, res);
+    const { message } = req.body;
+    const messageText = message?.text?.toLowerCase()?.trim();
+    const chatId = message?.chat?.id;
+
+    if (!messageText || !chatId) {
+        return res.sendStatus(400);
+    }
+
+    let responseText = 'I have nothing to say.'
+
+    console.log('REQ', message);
+    console.log('----------------------------------------')
+    console.log('RES', res.body);
+
+    // send response
+    try {
+        console.log('Init Servise');
+        await axios.post(TELEGRAM.SEND_MESSAGE, {
+            chat_id: chatId,
+            text: responseText,
+        });
+
+        res.send('Done');
+    } catch (e) {
+        console.log(e);
+        res.send(e);
+    }
 });
 
 app.listen(PORT, () => {
