@@ -21,7 +21,7 @@ config();
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-const TELEGRAM_URI = `https://api.telegram.org/${process.env.TELEGRAM_API_TOKEN}/sendMessage`;
+const TELEGRAM_URI = `https://api.telegram.org/bot${process.env.TELEGRAM_API_TOKEN}/sendMessage`;
 
 app.use(express.json());
 app.use(
@@ -29,6 +29,8 @@ app.use(
         extended: true,
     })
 );
+
+console.log('FFF', TELEGRAM_URI)
 
 app.post('/new-message', async (req, res) => {
     const { message } = req.body;
