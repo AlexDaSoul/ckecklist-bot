@@ -8,17 +8,20 @@
 
 import { config } from 'dotenv';
 import express from 'express';
+import axios from 'axios';
 // import Controller from './controller.js';
 
 config();
 
 // import Servise from './servise.js';
-import { API } from './const.js';
+// import { API } from './const.js';
 
 // const servise = new Servise();
 
 const PORT = process.env.PORT || 3000;
 const app = express();
+
+const TELEGRAM_URI = `https://api.telegram.org/bot${process.env.TELEGRAM_API_TOKEN}/sendMessage`;
 
 app.use(express.json());
 app.use(
@@ -27,7 +30,7 @@ app.use(
     })
 );
 
-app.post(API.NEW_MESSAGE, async (req, res) => {
+app.post('/new-message', async (req, res) => {
     const { message } = req.body;
     const messageText = message?.text?.toLowerCase()?.trim();
     const chatId = message?.chat?.id;
@@ -45,7 +48,7 @@ app.post(API.NEW_MESSAGE, async (req, res) => {
     // send response
     try {
         console.log('Init Servise');
-        await axios.post(TELEGRAM.SEND_MESSAGE, {
+        await axios.post(TELEGRAM_URI, {
             chat_id: chatId,
             text: responseText,
         });
