@@ -30,7 +30,7 @@ app.use(
     })
 );
 
-console.log('FFF', TELEGRAM_URI)
+console.log('FFF', PORT)
 
 app.post('/new-message', async (req, res) => {
     const { message } = req.body;
@@ -43,9 +43,9 @@ app.post('/new-message', async (req, res) => {
 
     let responseText = 'I have nothing to say.'
 
-    console.log('REQ', message);
+/*     console.log('REQ', message);
     console.log('----------------------------------------')
-    console.log('RES', res.body);
+    console.log('RES', res.body); */
 
     // send response
     try {
