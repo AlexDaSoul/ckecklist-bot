@@ -21,7 +21,7 @@ config();
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-const TELEGRAM_URI = `https://api.telegram.org/bot${process.env.TELEGRAM_API_TOKEN}/sendMessage`;
+const TELEGRAM_URI = `https://api.telegram.org/${process.env.TELEGRAM_API_TOKEN}/sendMessage`;
 
 app.use(express.json());
 app.use(
