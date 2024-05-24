@@ -30,9 +30,8 @@ app.use(
     })
 );
 
-console.log('FFF', app)
-
 app.post('/new-message', async (req, res) => {
+    console.log('Init Servise');
     const { message } = req.body;
     const messageText = message?.text?.toLowerCase()?.trim();
     const chatId = message?.chat?.id;
@@ -49,7 +48,7 @@ app.post('/new-message', async (req, res) => {
 
     // send response
     try {
-        console.log('Init Servise');
+        
         await axios.post(TELEGRAM_URI, {
             chat_id: chatId,
             text: responseText,
